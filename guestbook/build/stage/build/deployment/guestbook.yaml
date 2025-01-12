@@ -1,0 +1,10 @@
+metadata:
+  name: guestbook
+  namespace: stage
+  labels:
+    app.kubernetes.io/component: guestbook
+    app.kubernetes.io/version: v1.0.0
+    app.kubernetes.io/author-commit: SChekhovskiy@alfabank.ru
+    app.kubernetes.io/hash-commit: 6a2756d3f9cc8f587d519b4efe1c45aabf8a553b
+kind: Deployment
+apiVersion: apps/v1

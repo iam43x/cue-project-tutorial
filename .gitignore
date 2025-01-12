@@ -1,0 +1,7 @@
+.idea/
+proto/
+# go project
+vendor/
+deps.go
+go.mod
+go.sum
