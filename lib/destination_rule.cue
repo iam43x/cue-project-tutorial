@@ -12,7 +12,9 @@ import "istio.io/client-go/pkg/apis/networking/v1alpha3"
 	spec: {
 		exportTo: #ExportTo
 		host:     #FQDN
-		subsets: [...#ServiceEntryName]
+		subsets: [...{
+			name: #ServiceEntryName
+		}]
 		trafficPolicy: portLevelSettings: [...{
 			port: number: #Port
 		}]
