@@ -7,8 +7,7 @@ Service: "guestbook-svc": {
 			{
 				name: "http-80"
 				port: 80
-				targetPort: 80
-				protocol: "TCP"
+        targetPort: port
 			},
 		]
 		selector: _selector
