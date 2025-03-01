@@ -1,8 +1,8 @@
 package lib
 
 import (
-  "istio.io/client-go/pkg/apis/networking/v1alpha3"
-  "strings"
+	"istio.io/client-go/pkg/apis/networking/v1alpha3"
+	"strings"
 )
 
 #ServiceEntry: v1alpha3.#ServiceEntry & {
@@ -16,7 +16,7 @@ import (
 		exportTo: #ExportTo
 		hosts: [...#FQDN]
 		ports: [...{
-      name: "\(strings.ToLower(protocol))-\(number)"
+			name:     "\(strings.ToLower(protocol))-\(number)"
 			number:   #Port
 			protocol: #Protocol
 		}]

@@ -1,6 +1,6 @@
-# default for dump
-FILES?=.
-BUILD_PATH:="${FILES}/build"
+CUE_MOD?=$(error Param CUE_MOD not found. Use pls: CUE_MOD=<path_to_mod> make build)
+COMPONENT=$(basename "${CUE_MOD}")
+BUILD_PATH:="${CUE_MOD}/build"
 ifdef ENV
 	ENV_TAG:=-t ${ENV}
 	BUILD_PATH:="${BUILD_PATH}/${ENV}"
@@ -24,22 +24,24 @@ dump:
 	-t hash_commit=$$(git rev-parse HEAD) \
 	-t author_commit=$$(git log -1 --pretty=format:'%ae') \
 	-t version=$$(git tag --points-at HEAD) \
+	-t component=${COMPONENT} \
 	${ENV_TAG} \
-	dump ./${FILES}/... ./lib ./tool
+	dump ./${CUE_MOD}/... ./lib ./tool
 
 build:
-	@echo "[${GREEN}RUN${NO_COLOR}] write files to ${FILES}/build/.."
+	@echo "[${GREEN}RUN${NO_COLOR}] write files to ${CUE_MOD}/build/.."
 	@cue cmd \
 		-t hash_commit=$$(git rev-parse HEAD) \
 		-t author_commit=$$(git log -1 --pretty=format:'%ae') \
 		-t version=$$(git tag --points-at HEAD) \
+		-t component=${COMPONENT} \
 		-t build_path=${BUILD_PATH} \
 		${ENV_TAG} \
-		build ./${FILES}/... ./lib ./tool
+		build ./${CUE_MOD}/... ./lib ./tool
 	@echo "[${GREEN}DONE${NO_COLOR}] build success!"
 
 ls:
-	@cue cmd ls ./${FILES}/... ./tool
+	@cue cmd ls ./${CUE_MOD}/... ./tool
 
 clean:
 	@rm -rf **/build build proto vendor cue.mod/gen

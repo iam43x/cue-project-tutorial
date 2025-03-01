@@ -5,11 +5,10 @@ Service: "guestbook-svc": {
 	spec: {
 		ports: [
 			{
-				name: "http-80"
-				port: 80
-        targetPort: port
+				name:       _portName
+				port:       _port
+				targetPort: _port
 			},
 		]
-		selector: _selector
 	}
 }

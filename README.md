@@ -36,7 +36,7 @@ cue cmd \
   -t author_commit=$(git log -1 --pretty=format:'%ae') \
   -t version=$(git tag --points-at HEAD) \
   ${ENV_TAG} \
-  dump ./${FILES}/... ./lib ./tool
+  dump ./${CUE_MOD}/... ./lib ./tool
 ```
 
 <a name="values"></a>
@@ -91,7 +91,7 @@ cue cmd \
   -t author_commit=$(git log -1 --pretty=format:'%ae') \
   -t version=$(git tag --points-at HEAD) \
   -t ${ENV} \ # this tag value is true
-  dump ./${FILES}/... ./lib ./tool
+  dump ./${CUE_MOD}/... ./lib ./tool
 ```
 
 ---
@@ -107,7 +107,7 @@ cue cmd \
 
 ```shell
 # example
-FILES=guestbook ENV=stage make | yq
+CUE_MOD=guestbook ENV=stage make | yq
 ```
 
 **Параметры**
@@ -115,14 +115,14 @@ FILES=guestbook ENV=stage make | yq
 | Name | Description | Example |
 | ---- | ----------- | ------- |
 | `ENV` | Имя окружения, и фрагмент имени файла values.`stage`.cue | `ENV=stage` |
-| `FILES` | путь до каталога cue с логическим модулем | `FILES=guestbook` |
+| `CUE_MOD` | путь до каталога cue с логическим модулем | `CUE_MOD=guestbook` |
 ---
 
 ### Build
 
 ```shell
 # example
-FILES=guestbook ENV=stage make build
+CUE_MOD=guestbook ENV=stage make build
 ```
 
 Сохраняет все обьекты в `*.yaml` формате, раскладывая по каталогам c именем `kind` - например `build/gateway/..` или `/build/virtualservice/..`
@@ -148,7 +148,7 @@ make generate
 
 ```shell
 # example
-FILES=guestbook make ls
+CUE_MOD=guestbook make ls
 ```
 выводит имена и типы обьектов
 

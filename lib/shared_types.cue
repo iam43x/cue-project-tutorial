@@ -12,22 +12,19 @@ import "strings"
 
 #Protocol: #ProtocolIPv4 | "HTTP" | "HTTPS" | "GRPC" | "GRPC-WEB" | "HTTP2" | "MONGO" | "TLS"
 
-#PortName: strings.HasPrefix("tcp-") | strings.HasPrefix("udp-") | strings.HasPrefix("http-") | strings.HasPrefix("https-") | 
-  strings.HasPrefix("grpc-") | strings.HasPrefix("grpc-web-") | strings.HasPrefix("http2-") | strings.HasPrefix("mongo-") |
-  strings.HasPrefix("tls-")
+#PortName: strings.HasPrefix("tcp-") | strings.HasPrefix("udp-") | strings.HasPrefix("http-") | strings.HasPrefix("https-") |
+	strings.HasPrefix("grpc-") | strings.HasPrefix("grpc-web-") | strings.HasPrefix("http2-") | strings.HasPrefix("mongo-") |
+	strings.HasPrefix("tls-")
 
 //*** exclude 0, because 0 maybe all/random port value... */
 #Port: uint16 & >0
 
 #Labels: {
-	"app.kubernetes.io/component": #ResourceName
+	Labels.Version
+	Labels.Component
+	Labels.CommitInfo
 	"app.kubernetes.io/instance"?: #ResourceName
-	#GitLabels
-	[string]: string
+	[string]:                      string
 }
 
-#GitLabels: {
-	"app.kubernetes.io/version":       Version & =~"^v\\d.\\d.\\d$"
-	"app.kubernetes.io/author-commit": AuthorCommit & =~"^.+@.+$"
-	"app.kubernetes.io/hash-commit":   HashCommit & =~"^[a-f0-9]{40}$"
-}
+#SemVer2: =~"^v\\d+.\\d+.\\d+$"

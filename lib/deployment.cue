@@ -9,12 +9,15 @@ import "k8s.io/api/apps/v1"
 		name:   #ResourceName
 		labels: #Labels
 	}
-	spec: template: spec: containers: [...{
-		ports: [...{
-      name:          #PortName
-			containerPort: #Port
-			hostPort?:      #Port
-			protocol:      #ProtocolIPv4
+	spec: template: {
+    metadata: labels: #Labels
+		spec: containers: [...{
+			ports: [...{
+				name:          #PortName
+				containerPort: #Port
+				hostPort?:     #Port
+				protocol:      #ProtocolIPv4
+			}]
 		}]
-	}]
+	}
 }

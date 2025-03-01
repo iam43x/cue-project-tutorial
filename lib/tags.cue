@@ -1,6 +1,9 @@
 package lib
 
 //*** build-in params */
-Version:      string @tag(version)
-HashCommit:   string @tag(hash_commit)
-AuthorCommit: string @tag(author_commit)
+Tags: {
+  Version:      string @tag(version)
+	Component:    string @tag(component)
+  HashCommit:   string @tag(hash_commit)
+  AuthorCommit: string @tag(author_commit)
+}

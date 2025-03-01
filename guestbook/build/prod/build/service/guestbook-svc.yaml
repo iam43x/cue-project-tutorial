@@ -2,10 +2,10 @@ metadata:
   name: guestbook-svc
   namespace: prod
   labels:
+    app.kubernetes.io/version: v1.0.3
     app.kubernetes.io/component: guestbook
-    app.kubernetes.io/version: v1.0.0
-    app.kubernetes.io/author-commit: 57844106+iam43x@users.noreply.github.com
-    app.kubernetes.io/hash-commit: a3e5570a4f764e8d186ddd7e8f3f169f2ef77c80
+    app.kubernetes.io/author-commit: test@mail.ru
+    app.kubernetes.io/hash-commit: e1a96520125bcf482db40cd203699ae32ae6d908
 spec:
   ports:
     - name: http-80
@@ -14,6 +14,7 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/component: guestbook
+    app.kubernetes.io/version: v1.0.3
   type: ClusterIP
 kind: Service
 apiVersion: v1
