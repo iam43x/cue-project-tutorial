@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/version: v1.0.3
     app.kubernetes.io/component: guestbook
     app.kubernetes.io/author-commit: test@mail.ru
-    app.kubernetes.io/hash-commit: e1a96520125bcf482db40cd203699ae32ae6d908
+    app.kubernetes.io/hash-commit: 5c4647831a6e756dbbe1da95b3c319067457a926
 spec:
   ports:
     - name: http-80

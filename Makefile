@@ -1,5 +1,5 @@
-CUE_MOD?=$(error Param CUE_MOD not found. Use pls: CUE_MOD=<path_to_mod> make build)
-COMPONENT=$(basename "${CUE_MOD}")
+CUE_MOD?=
+COMPONENT?=$(subst /,_,$(CUE_MOD))
 BUILD_PATH:="${CUE_MOD}/build"
 ifdef ENV
 	ENV_TAG:=-t ${ENV}
@@ -20,19 +20,25 @@ PROTOBUF_VERSION=v25.6
 # dump object to yaml
 
 dump:
+ifndef CUE_MOD
+	$(error Parameter CUE_MOD not found. Use pls: CUE_MOD=<path_to_mod> make build)
+endif
 	@cue cmd \
 	-t hash_commit=$$(git rev-parse HEAD) \
-	-t author_commit=$$(git log -1 --pretty=format:'%ae') \
+	-t author_commit=$$(git log -1 --pretty=format:'%ae' | sed 's/@.*//') \
 	-t version=$$(git tag --points-at HEAD) \
 	-t component=${COMPONENT} \
 	${ENV_TAG} \
 	dump ./${CUE_MOD}/... ./lib ./tool
 
 build:
+ifndef CUE_MOD
+	$(error Parameter CUE_MOD not found. Use pls: CUE_MOD=<path_to_mod> make build)
+endif
 	@echo "[${GREEN}RUN${NO_COLOR}] write files to ${CUE_MOD}/build/.."
 	@cue cmd \
 		-t hash_commit=$$(git rev-parse HEAD) \
-		-t author_commit=$$(git log -1 --pretty=format:'%ae') \
+		-t author_commit=$$(git log -1 --pretty=format:'%ae' | sed 's/@.*//') \
 		-t version=$$(git tag --points-at HEAD) \
 		-t component=${COMPONENT} \
 		-t build_path=${BUILD_PATH} \
