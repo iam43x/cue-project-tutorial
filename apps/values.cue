@@ -1,7 +1,8 @@
 package k8s
 
-#Values: {
+#Guestbook: {
 	Namespace: string
+	Path:      string
 }
 
-Values: #Values
+Guestbook: #Guestbook

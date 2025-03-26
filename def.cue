@@ -13,7 +13,6 @@ ConfigMap: [Name=string]: lib_v1.#ConfigMap & {metadata: name: Name}
 Deployment: [Name=string]: lib_v1.#Deployment & {metadata: name: Name}
 NetworkPolicy: [Name=string]: lib_v1.#NetworkPolicy & {metadata: name: Name}
 HorizontalPodAutoscaler: [Name=string]: lib_v1.#HorizontalPodAutoscaler & {metadata: name: Name}
-
 //*** istio objects */
 Sidecar: [Name=string]: lib_v1.#Sidecar & {metadata: name: Name}
 Gateway: [Name=string]: lib_v1.#Gateway & {metadata: name: Name}

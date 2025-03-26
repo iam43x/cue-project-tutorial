@@ -6,7 +6,7 @@ Deployment: "guestbook": {
 		metadata: _metadata
 		spec: containers: [{
 			name:  "app"
-			image: "asd:latest"
+			image: _image
 			ports: [{
 				name:          _portName
 				containerPort: _port

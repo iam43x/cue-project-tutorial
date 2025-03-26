@@ -1,20 +1,20 @@
 metadata:
   name: guestbook
-  namespace: prod
+  namespace: stage
   labels:
-    app.kubernetes.io/version: v1.0.3
+    app.kubernetes.io/version: v1.0.4
     app.kubernetes.io/component: guestbook
-    app.kubernetes.io/author-commit: test@mail.ru
-    app.kubernetes.io/hash-commit: 5c4647831a6e756dbbe1da95b3c319067457a926
+    app.kubernetes.io/author-commit: test
+    app.kubernetes.io/hash-commit: cfd3051b875699bfb42d51a11063dd5bfa821e9f
 spec:
   template:
     metadata:
-      namespace: prod
+      namespace: stage
       labels:
-        app.kubernetes.io/version: v1.0.3
+        app.kubernetes.io/version: v1.0.4
         app.kubernetes.io/component: guestbook
-        app.kubernetes.io/author-commit: test@mail.ru
-        app.kubernetes.io/hash-commit: 5c4647831a6e756dbbe1da95b3c319067457a926
+        app.kubernetes.io/author-commit: test
+        app.kubernetes.io/hash-commit: cfd3051b875699bfb42d51a11063dd5bfa821e9f
     spec:
       containers:
         - name: app

@@ -18,7 +18,7 @@ import (
 		ports: [...{
 			name:         #PortName
 			port:         #Port
-			targetPort:   #Port
+			targetPort:   #Port | *port
 			nodePort?:    #Port
 			protocol:     #ProtocolIPv4
 			appProtocol?: #AppProtocol

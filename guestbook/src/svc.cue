@@ -5,9 +5,8 @@ Service: "guestbook-svc": {
 	spec: {
 		ports: [
 			{
-				name:       _portName
-				port:       _port
-				targetPort: _port
+				name: _portName
+				port: _port
 			},
 		]
 	}

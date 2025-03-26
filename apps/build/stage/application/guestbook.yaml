@@ -1,0 +1,21 @@
+metadata:
+  name: guestbook
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/version: v1.0.4
+    app.kubernetes.io/component: apps
+    app.kubernetes.io/author-commit: test
+    app.kubernetes.io/hash-commit: cfd3051b875699bfb42d51a11063dd5bfa821e9f
+spec:
+  destination:
+    namespace: stage
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: guestbook/build/stage
+    repoURL: https://github.com/iam43x/cue-project-tutorial
+    targetRevision: HEAD
+kind: Application
+apiVersion: argoproj.io/v1alpha1

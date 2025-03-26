@@ -131,18 +131,3 @@ getproto:
 	@echo "[${GREEN}RUN${NO_COLOR}] remove all empty dir in ./proto"
 	@find ./proto -type d -empty -delete
 	@echo "[${GREEN}DONE${NO_COLOR}] success!"
-
-import:
-	@echo "[${GREEN}RUN${NO_COLOR}] find objects ${RESOURCES} in ${NAMESPACE} matching with ${NAME}..."
-	@objects=$$(kubectl get $(RESOURCES) --namespace $(NAMESPACE) \
-			| grep ${NAME} | awk '{print $$1}'); \
-	mkdir -p ${NAME}; \
-	for obj in $$objects; do \
-		obj_type=$$(echo "$$obj" | cut -d "/" -f 1); \
-		obj_name=$$(echo "$$obj" | cut -d "/" -f 2); \
-		echo "$$obj_type/$$obj_name write to file..."; \
-		kubectl get $$obj_type $$obj_name --namespace $(NAMESPACE) -o yaml > "$${NAME}/$${obj_name}.yaml"; \
-	done
-	@echo "[${GREEN}RUN${NO_COLOR}] run cue import..."
-	@cue import -p k8s ./${NAME}/... -l metadata.name
-	@echo "[${GREEN}DONE${NO_COLOR}] success!"

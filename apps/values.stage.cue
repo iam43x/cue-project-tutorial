@@ -1,6 +1,7 @@
 @if(stage)
 package k8s
 
-Values: {
+Guestbook: {
 	Namespace: "stage"
+	Path:      "guestbook/build/stage"
 }
