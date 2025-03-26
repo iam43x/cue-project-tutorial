@@ -4,5 +4,5 @@ _metadata: {
 	namespace: Values.Namespace
 }
 
-_port: 80
+_port:     80
 _portName: "http-80"

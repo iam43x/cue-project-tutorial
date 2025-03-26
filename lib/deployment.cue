@@ -10,7 +10,7 @@ import "k8s.io/api/apps/v1"
 		labels: #Labels
 	}
 	spec: template: {
-    metadata: labels: #Labels
+		metadata: labels: #Labels
 		spec: containers: [...{
 			ports: [...{
 				name:          #PortName
